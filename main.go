@@ -32,6 +32,22 @@ func emptyHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		responseMessage := `
+Task Manager!
+
+To view all tasks: GET /tasks
+
+To add a new task: POST /tasks
+Body: {"title": "Task Manager", "status": "pending"}
+
+To update a task: PUT /task/{id}
+Body: {"title": "Updated Task Title", "status": "completed"}
+
+To delete a task: DELETE /task/{id}
+
+sReplace {id} with the actual task ID.
+
+Student ID: 500228151
+GitHub Repository: 
 		`
 		fmt.Fprint(w, responseMessage)
 	default:
