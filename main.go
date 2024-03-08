@@ -20,10 +20,23 @@ var tasks = []Task{} // In-memory storage for tasks
 const Dport = ":8012"
 
 func main() {
+	http.HandleFunc("/", emptyHandler)
 	http.HandleFunc("/tasks", tasksHandler)
 	http.HandleFunc("/task/", taskHandler)
 	fmt.Printf("Server is starting on port: %v\n", Dport) // Added newline for better terminal output
 	http.ListenAndServe(Dport, nil)
+}
+
+// Handle requests to the / endpoint
+func emptyHandler(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "GET":
+		responseMessage := `
+		`
+		fmt.Fprint(w, responseMessage)
+	default:
+		w.WriteHeader(http.StatusMethodNotAllowed)
+	}
 }
 
 // Handle requests to the /tasks endpoint
