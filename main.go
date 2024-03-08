@@ -47,7 +47,7 @@ To delete a task: DELETE /task/{id}
 sReplace {id} with the actual task ID.
 
 Student ID: 500228151
-GitHub Repository: 
+GitHub Repository: https://github.com/vinaychhabra/goCRUD.git
 		`
 		fmt.Fprint(w, responseMessage)
 	default:
